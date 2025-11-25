@@ -1,12 +1,6 @@
 ﻿using Music_Management.Helpers;
 using Music_Management.Models;
-using Music_Management.Repositories;
 using Music_Management.Services;
-using System;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace Music_Management.UI.Popup
 {
@@ -44,7 +38,7 @@ namespace Music_Management.UI.Popup
             using var dialog = new OpenFileDialog();
             dialog.Title = "Chọn file ảnh";
             dialog.Filter = "Image Files|*.png;*.jpg;*.jpeg";
-
+                
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 lblImagePath.Text = dialog.FileName;
@@ -59,7 +53,7 @@ namespace Music_Management.UI.Popup
                 return;
             }
 
-            if (!File.Exists(lblImagePath.Text))
+            if (!File.Exists((lblImagePath.Text)))
             {
                 Utils.ShowWarning("Vui lòng chọn file ảnh hợp lệ!");
                 return;

@@ -13,7 +13,6 @@ namespace YourApp.Theme
 
         public static event Action ThemeChanged;
 
-        // Load theme trạng thái cũ khi app khởi động
         public static void LoadTheme()
         {
             if (File.Exists(ThemeFile))
@@ -23,7 +22,6 @@ namespace YourApp.Theme
             }
         }
 
-        // Lưu theme khi người dùng đổi
         private static void SaveTheme()
         {
             File.WriteAllText(ThemeFile, IsDark ? "dark" : "light");
@@ -36,10 +34,9 @@ namespace YourApp.Theme
 
             ApplyThemeToAllOpenForms();
 
-            ThemeChanged?.Invoke(); // fallback cho các control
+            ThemeChanged?.Invoke(); 
         }
 
-        // Áp dụng theme lên TẤT CẢ form trong ứng dụng
         public static void ApplyThemeToAllOpenForms()
         {
             foreach (Form form in Application.OpenForms)
@@ -48,7 +45,6 @@ namespace YourApp.Theme
             }
         }
 
-        // Hàm apply theme cho 1 control và các control con
         public static void ApplyTheme(Control control)
         {
             if (IsDark)

@@ -10,16 +10,28 @@ namespace Music_Management.UI.SubUI
 {
     public partial class ArtistDetail : Form
     {
+        private readonly string _permission;
         private Artist artist;
         private List<Song> songs;
 
-        public ArtistDetail(Artist artist)
+        public ArtistDetail(Artist artist, string permission)
         {
+            _permission = permission;
             InitializeComponent();
+            ValidatePermission();
             this.artist = artist;
             this.songs = SongRepository.GetSongByArtistId(artist.Id);
             LoadArtistDetail();
             LoadSongs();
+            DialogResult = DialogResult.OK;
+        }
+        private void ValidatePermission()
+        {
+            if (_permission == "admin")
+            {
+                this.btnEdit.Visible = true;
+                this.btnDelete.Visible = true;
+            }
         }
 
         private void LoadArtistDetail()

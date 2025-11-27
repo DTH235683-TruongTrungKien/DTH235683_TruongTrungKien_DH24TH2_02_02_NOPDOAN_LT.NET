@@ -16,6 +16,7 @@ namespace Music_Management.UI.Popup
         {
             InitializeComponent();
             lblTitle.Text = option == "add" ? "Thêm bài hát" : "Chỉnh sửa bài hát";
+            this.Text = option == "add" ? "Thêm bài hát" : "Chỉnh sửa bài hát";
             this.option = option;
             this.editingSong = song;
 
@@ -23,10 +24,6 @@ namespace Music_Management.UI.Popup
 
             if (option == "edit" && song != null)
                 FillValues();
-
-            btnChooseFile.Click += BtnChooseFile_Click;
-            btnOk.Click += BtnOk_Click;
-            btnCancel.Click += (s, e) => Close();
         }
 
         private void LoadArtists()
@@ -51,7 +48,7 @@ namespace Music_Management.UI.Popup
             cmbArtist.SelectedItem = editingSong.Artist?.Name ?? "(Không có)";
         }
 
-        private void BtnChooseFile_Click(object? sender, EventArgs e)
+        private void btnChooseFile_Click(object sender, EventArgs e)
         {
             using var dialog = new OpenFileDialog();
             dialog.Title = "Chọn file nhạc";
@@ -63,12 +60,11 @@ namespace Music_Management.UI.Popup
 
                 // Đọc duration bằng TagLib
                 var tfile = TagLib.File.Create(dialog.FileName);
-                txtDuration.Text = TimeSpan.FromSeconds(tfile.Properties.Duration.TotalSeconds)
-                                   .ToString(@"mm\:ss");
+                txtDuration.Text = TimeSpan.FromSeconds(tfile.Properties.Duration.TotalSeconds).ToString(@"mm\:ss");
             }
         }
 
-        private void BtnOk_Click(object? sender, EventArgs e)
+        private void btnOk_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtTitle.Text))
             {
@@ -117,5 +113,12 @@ namespace Music_Management.UI.Popup
             DialogResult = DialogResult.OK;
             Close();
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        
     }
 }

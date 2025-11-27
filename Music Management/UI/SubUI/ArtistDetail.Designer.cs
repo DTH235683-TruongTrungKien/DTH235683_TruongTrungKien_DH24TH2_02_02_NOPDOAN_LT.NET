@@ -132,25 +132,27 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(238, 7);
+            btnEdit.Location = new Point(377, 8);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(120, 40);
             btnEdit.TabIndex = 0;
             btnEdit.Text = "Sửa thông tin";
+            btnEdit.Visible = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(368, 7);
+            btnDelete.Location = new Point(507, 8);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(120, 40);
             btnDelete.TabIndex = 1;
             btnDelete.Text = "Xóa nghệ sĩ";
+            btnDelete.Visible = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // btnPlay
             // 
-            btnPlay.Location = new Point(498, 7);
+            btnPlay.Location = new Point(723, 8);
             btnPlay.Name = "btnPlay";
             btnPlay.Size = new Size(120, 40);
             btnPlay.TabIndex = 2;
@@ -159,7 +161,7 @@
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(628, 7);
+            btnClose.Location = new Point(849, 8);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(120, 40);
             btnClose.TabIndex = 3;
@@ -171,7 +173,7 @@
             listDetail.AllowColumnReorder = true;
             listDetail.Columns.AddRange(new ColumnHeader[] { None, title, album, releaseDate, duration });
             listDetail.FullRowSelect = true;
-            listDetail.Location = new Point(9, 255);
+            listDetail.Location = new Point(13, 255);
             listDetail.Name = "listDetail";
             listDetail.Size = new Size(960, 274);
             listDetail.TabIndex = 3;

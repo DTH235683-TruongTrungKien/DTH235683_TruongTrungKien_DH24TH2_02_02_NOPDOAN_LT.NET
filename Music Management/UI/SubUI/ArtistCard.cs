@@ -1,22 +1,15 @@
 ﻿using Music_Management.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Music_Management.UI.SubUI
 {
     public partial class ArtistCard : UserControl
     {
+        private readonly string _permission;
         public Artist Artist { get; private set; }
 
-        public ArtistCard(Artist artist)
+        public ArtistCard(Artist artist, string permission)
         {
+            _permission = permission;
             InitializeComponent();
             Artist = artist;
             LoadArtist();
@@ -31,7 +24,7 @@ namespace Music_Management.UI.SubUI
 
         private void btnDetail_Click(object sender, EventArgs e)
         {
-            using var detail = new ArtistDetail(Artist);
+            using var detail = new ArtistDetail(Artist, _permission);
             if(detail.ShowDialog(this) == DialogResult.OK)
             {
                 LoadArtist();

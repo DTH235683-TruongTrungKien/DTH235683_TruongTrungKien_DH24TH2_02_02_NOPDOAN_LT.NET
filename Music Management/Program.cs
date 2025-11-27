@@ -1,4 +1,4 @@
-using Music_Management.Data;
+﻿using Music_Management.Data;
 using Music_Management.UI;
 
 namespace Music_Management
@@ -13,7 +13,7 @@ namespace Music_Management
         {
             ApplicationConfiguration.Initialize();
             DbGeneral.Initialize();
-            Application.Run(new MainForm());
+            Application.Run(new LoginForm());
         }
     }
 }

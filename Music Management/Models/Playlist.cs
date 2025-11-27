@@ -11,7 +11,7 @@ namespace Music_Management.Models
         public int Id { get; set; }
         public string Title { get; set; } = string.Empty;
         public string? Description { get; set; }
-        public int? SongQuantity { get; set; }
+        public int SongQuantity { get; set; } = 0;
         public List<Song> Songs { get; set; } = new();
     }
 

@@ -32,7 +32,6 @@ namespace Music_Management.UI.Popup
 
             txtTitle.Text = editingPlaylist.Title;
             txtDescription.Text = editingPlaylist.Description;
-            txtSongQuantity.Text = editingPlaylist.Songs?.Count.ToString() ?? "0";
         }
 
         private void btnOk_Click(object sender, EventArgs e)

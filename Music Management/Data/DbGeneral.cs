@@ -14,7 +14,7 @@ namespace Music_Management.Data
                 CREATE TABLE IF NOT EXISTS ARTISTS (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     name TEXT UNIQUE NOT NULL,
-                    birthDay DATE,
+                    birthDay TEXT,
                     country TEXT,
                     imagePath TEXT NOT NULL
                 );
@@ -24,7 +24,7 @@ namespace Music_Management.Data
                     title TEXT NOT NULL,
                     artistId INTEGER,
                     album TEXT,
-                    releaseDate DATE,   
+                    releaseDate TEXT,   
                     duration TEXT,
                     filePath TEXT NOT NULL,
                     FOREIGN KEY (artistId) REFERENCES ARTISTS(id) ON DELETE SET NULL
@@ -55,7 +55,7 @@ namespace Music_Management.Data
             cmd.Parameters.AddWithValue("@tableName", tableName);
 
             var result = cmd.ExecuteScalar();
-            if (result != null && result != DBNull.Value)
+            if (result != null)
             {
                 return Convert.ToInt32(result) + 1;
             }

@@ -49,7 +49,6 @@
             flowArtists.Padding = new Padding(10);
             flowArtists.Size = new Size(1260, 584);
             flowArtists.TabIndex = 0;
-            flowArtists.Paint += flowArtists_Paint;
             // 
             // panelButtons
             // 

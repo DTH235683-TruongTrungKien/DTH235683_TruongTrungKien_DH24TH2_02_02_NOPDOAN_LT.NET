@@ -10,13 +10,25 @@ namespace Music_Management.UI.Views
 {
     public partial class ArtistView : UserControl
     {
+        private readonly string _permission;
         private List<Artist> artists = new();
 
-        public ArtistView()
+        public ArtistView(string permission)
         {
+            _permission = permission;
             InitializeComponent();
+            ValidatePermission();
             ArtistCache.Artists = ArtistRepository.GetAll();
             LoadArtists();
+        }
+        private void ValidatePermission()
+        {
+            if (_permission == "admin")
+            {
+                this.btnAdd.Visible = true;
+                this.btnSave.Visible = true;
+                this.btnCancel.Visible = true;
+            }
         }
 
         public void LoadArtists()
@@ -25,7 +37,7 @@ namespace Music_Management.UI.Views
 
             foreach (var artist in ArtistCache.Artists)
             {
-                var card = new ArtistCard(artist);
+                var card = new ArtistCard(artist, _permission);
                 card.Margin = new Padding(15);
                 flowArtists.Controls.Add(card);
             }
@@ -52,11 +64,6 @@ namespace Music_Management.UI.Views
             ArtistService.Cancel();
             MessageBox.Show("Đã hủy thay đổi");
             LoadArtists();
-        }
-
-        private void flowArtists_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

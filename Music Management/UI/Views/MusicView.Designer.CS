@@ -37,27 +37,29 @@
             // btnCancel
             // 
             btnCancel.Font = new Font("Quicksand", 10F);
-            btnCancel.Location = new Point(976, 52);
+            btnCancel.Location = new Point(918, 52);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(150, 50);
             btnCancel.TabIndex = 5;
             btnCancel.Text = "Hủy thay đổi";
+            btnCancel.Visible = false;
             btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
             btnSave.Font = new Font("Quicksand", 10F);
-            btnSave.Location = new Point(799, 52);
+            btnSave.Location = new Point(741, 52);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(150, 50);
             btnSave.TabIndex = 4;
             btnSave.Text = "Lưu thay đổi";
+            btnSave.Visible = false;
             btnSave.Click += btnSave_Click;
             // 
             // btnPlay
             // 
             btnPlay.Font = new Font("Quicksand", 10F);
-            btnPlay.Location = new Point(621, 52);
+            btnPlay.Location = new Point(1093, 52);
             btnPlay.Name = "btnPlay";
             btnPlay.Size = new Size(150, 50);
             btnPlay.TabIndex = 3;
@@ -67,31 +69,34 @@
             // btnDelete
             // 
             btnDelete.Font = new Font("Quicksand", 10F);
-            btnDelete.Location = new Point(443, 52);
+            btnDelete.Location = new Point(565, 52);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(150, 50);
             btnDelete.TabIndex = 2;
             btnDelete.Text = "Xóa bài hát";
+            btnDelete.Visible = false;
             btnDelete.Click += btnDelete_Click;
             // 
             // btnEdit
             // 
             btnEdit.Font = new Font("Quicksand", 10F);
-            btnEdit.Location = new Point(269, 52);
+            btnEdit.Location = new Point(391, 52);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(150, 50);
             btnEdit.TabIndex = 1;
             btnEdit.Text = "Sửa bài hát";
+            btnEdit.Visible = false;
             btnEdit.Click += btnEdit_Click;
             // 
             // btnAdd
             // 
             btnAdd.Font = new Font("Quicksand", 10F);
-            btnAdd.Location = new Point(93, 52);
+            btnAdd.Location = new Point(215, 52);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(150, 50);
             btnAdd.TabIndex = 0;
             btnAdd.Text = "Thêm bài hát";
+            btnAdd.Visible = false;
             btnAdd.Click += btnAdd_Click;
             // 
             // panelButtons
@@ -154,11 +159,11 @@
             duration.TextAlign = HorizontalAlignment.Center;
             duration.Width = 120;
             // 
-            // MusicListControl
+            // MusicView
             // 
             Controls.Add(listMusic);
             Controls.Add(panelButtons);
-            Name = "MusicListControl";
+            Name = "MusicView";
             Size = new Size(1300, 700);
             panelButtons.ResumeLayout(false);
             ResumeLayout(false);

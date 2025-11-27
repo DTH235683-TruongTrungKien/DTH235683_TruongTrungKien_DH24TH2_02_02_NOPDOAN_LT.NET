@@ -12,8 +12,6 @@ namespace Music_Management.UI.Popup
         private TextBox txtTitle;
         private Label lblDescription;
         private TextBox txtDescription;
-        private Label lblSongQuantity;
-        private TextBox txtSongQuantity;
         private Button btnOk;
         private Button btnCancel;
 
@@ -31,8 +29,6 @@ namespace Music_Management.UI.Popup
             txtTitle = new TextBox();
             lblDescription = new Label();
             txtDescription = new TextBox();
-            lblSongQuantity = new Label();
-            txtSongQuantity = new TextBox();
             btnOk = new Button();
             btnCancel = new Button();
             SuspendLayout();
@@ -77,25 +73,9 @@ namespace Music_Management.UI.Popup
             txtDescription.Size = new Size(200, 27);
             txtDescription.TabIndex = 4;
             // 
-            // lblSongQuantity
-            // 
-            lblSongQuantity.Location = new Point(20, 130);
-            lblSongQuantity.Name = "lblSongQuantity";
-            lblSongQuantity.Size = new Size(120, 23);
-            lblSongQuantity.TabIndex = 5;
-            lblSongQuantity.Text = "Số lượng bài hát:";
-            // 
-            // txtSongQuantity
-            // 
-            txtSongQuantity.Location = new Point(150, 130);
-            txtSongQuantity.Name = "txtSongQuantity";
-            txtSongQuantity.ReadOnly = true;
-            txtSongQuantity.Size = new Size(200, 27);
-            txtSongQuantity.TabIndex = 6;
-            // 
             // btnOk
             // 
-            btnOk.Location = new Point(80, 180);
+            btnOk.Location = new Point(80, 139);
             btnOk.Name = "btnOk";
             btnOk.Size = new Size(100, 35);
             btnOk.TabIndex = 7;
@@ -104,7 +84,7 @@ namespace Music_Management.UI.Popup
             // 
             // btnCancel
             // 
-            btnCancel.Location = new Point(200, 180);
+            btnCancel.Location = new Point(200, 139);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(100, 35);
             btnCancel.TabIndex = 8;
@@ -113,14 +93,12 @@ namespace Music_Management.UI.Popup
             // 
             // PlaylistPopup
             // 
-            ClientSize = new Size(400, 240);
+            ClientSize = new Size(400, 191);
             Controls.Add(lblTitle);
             Controls.Add(lblPlaylistName);
             Controls.Add(txtTitle);
             Controls.Add(lblDescription);
             Controls.Add(txtDescription);
-            Controls.Add(lblSongQuantity);
-            Controls.Add(txtSongQuantity);
             Controls.Add(btnOk);
             Controls.Add(btnCancel);
             FormBorderStyle = FormBorderStyle.FixedDialog;

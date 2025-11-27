@@ -15,11 +15,26 @@ namespace Music_Management.UI.Views
 {
     public partial class MusicView : UserControl
     {
-        public MusicView()
+        private readonly string _permission;
+        public MusicView(string permission)
         {
+            _permission = permission;
             InitializeComponent();
+            ValidatePermission();
             SongCache.Songs = SongRepository.GetAll();
             LoadMusicData();
+        }
+
+        private void ValidatePermission()
+        {
+            if (_permission == "admin")
+            {
+                this.btnAdd.Visible = true;
+                this.btnEdit.Visible = true;
+                this.btnDelete.Visible = true;
+                this.btnSave.Visible = true;
+                this.btnCancel.Visible = true;
+            }
         }
 
         private void LoadMusicData()

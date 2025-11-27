@@ -22,21 +22,18 @@ namespace Music_Management.UI.Views
         private void LoadPlaylistData()
         {
             playlistListView.Items.Clear();
-            int stt = 1;
 
             foreach (var playlist in PlaylistCache.Playlists)
             {
-                ListViewItem item = new ListViewItem(stt.ToString());
+                ListViewItem item = new ListViewItem();
                 item.SubItems.Add(playlist.Title ?? "(Không có)");
                 item.SubItems.Add(playlist.Description ?? "(Không có)");
-                item.SubItems.Add(playlist.Songs?.Count.ToString() ?? "0");
+                item.SubItems.Add(playlist.SongQuantity.ToString() ?? "0");
                 item.Tag = playlist;
                 playlistListView.Items.Add(item);
-                stt++;
             }
 
             songListView.Items.Clear();
-            lblSongQuantity.Text = "Số lượng bài hát: 0";
             lblDescription.Text = "Mô tả:";
         }
 
@@ -76,7 +73,7 @@ namespace Music_Management.UI.Views
                 }
 
                 lblDescription.Text = "Mô tả: " + (selectedPlaylist.Description ?? "(Không có)");
-                lblSongQuantity.Text = "Số lượng bài hát: " + selectedPlaylist.Songs.Count;
+                lblSongQuantity.Text = "Số lượng bài hát: " + (selectedPlaylist.SongQuantity);
             }
         }
         private void playlistListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -156,19 +153,23 @@ namespace Music_Management.UI.Views
             if (playlistListView.SelectedItems.Count > 0)
             {
                 var selectedPlaylist = (Playlist)playlistListView.SelectedItems[0].Tag;
-                if (selectedPlaylist != null)
+                List<Song> addedSongs = new List<Song>();
+                foreach (ListViewItem item in songListView.Items)
                 {
-                    List<Song> addedSongs = new List<Song>();
-                    foreach (ListViewItem item in songListView.Items)
+                    Song song = (Song)item.Tag;
+                    addedSongs.Add(song);
+                }
+                using var popup = new PlaylistSongsPopup(selectedPlaylist, addedSongs);
+                if (popup.ShowDialog() == DialogResult.OK)
+                {
+                    int selectedIndex = playlistListView.SelectedIndices[0];
+                    var index = PlaylistCache.Playlists.FindIndex(x => x.Id == selectedIndex);
+                    if (index >= 0)
                     {
-                        Song song = (Song)item.Tag;
-                        addedSongs.Add(song);
+                        PlaylistCache.Playlists[index].SongQuantity = songListView.Items.Count;
+                        lblSongQuantity.Text = (PlaylistCache.Playlists[index].SongQuantity).ToString();
                     }
-                    using var popup = new PlaylistSongsPopup(selectedPlaylist, addedSongs);
-                    if (popup.ShowDialog() == DialogResult.OK)
-                    {
-                        LoadSongsInPlaylist();
-                    }
+                    LoadSongsInPlaylist();
                 }
             }
             else
@@ -221,7 +222,7 @@ namespace Music_Management.UI.Views
             {
                 var index = songListView.SelectedIndices[0];
                 List<Song> playSongs = new List<Song>();
-                foreach (ListViewItem item in songListView.SelectedItems)
+                foreach (ListViewItem item in songListView.Items)
                 {
                     playSongs.Add((Song)item.Tag);
                 }

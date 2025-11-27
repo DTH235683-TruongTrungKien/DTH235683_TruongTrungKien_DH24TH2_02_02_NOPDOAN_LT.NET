@@ -32,7 +32,7 @@ namespace Music_Management.UI.Views
         private void HookEvents()
         {
             switchButton.Click += (s, e) => ToggleTheme();
-            btnExit.Click += (s, e) => Application.Exit(); // vì là UserControl
+            btnExit.Click += (s, e) => Application.Exit();
         }
 
         private void ToggleTheme()
